@@ -1,0 +1,49 @@
+.payment-overlay-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: row;        /* lay items side by side */
+  flex-wrap: wrap;            /* wrap to the next line if needed */
+  gap: 12px;
+  z-index: 999999;
+  pointer-events: none;       /* do not block page */
+  justify-content: flex-end;  /* keep items aligned to the right */
+}
+
+.payment-overlay {
+  background: rgba(30, 30, 30, 0.84); /* semi-transparent greyish black */
+  color: #ffffff;
+  padding: 16px 20px;
+  font-size: 18px;            /* larger, easier to read */
+  line-height: 1.5;
+  font-weight: 500;
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, system-ui, -apple-system, "Noto Sans", sans-serif;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: auto;       /* allow selecting/copying */
+  max-width: 420px;           /* larger card */
+  word-wrap: break-word;
+  white-space: pre-wrap;       /* preserve multiple spaces and \n */
+  overflow: visible;
+  backdrop-filter: saturate(120%) blur(1px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  animation: slideIn 0.25s ease-out;
+}
+
+.payment-overlay.show {
+  opacity: 1;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
